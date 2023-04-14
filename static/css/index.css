@@ -27,6 +27,7 @@ form {
 
 .submit-container {
   position: relative;
+  margin-top: 1.2rem;
 }
 
 .wrapper {
@@ -99,6 +100,10 @@ form {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+
+#file-name-container {
+  text-align: center;
 }
 
 .circle {

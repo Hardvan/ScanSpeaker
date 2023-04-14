@@ -8,7 +8,7 @@ import cv2
 import numpy as np
 import PIL
 from gtts import gTTS
-import os
+# import os
 
 app = Flask(__name__)
 

@@ -27,15 +27,21 @@ def index():
         data = reader.readtext(np.array(img))
         text = data[0][1]
 
+        print(data)  # For debugging
+
         # Converting to speech
         language = 'en'
         speech = gTTS(text=text, lang=language, slow=False)
-        speech.save("speech.mp3")
 
-        # Play the audio
-        os.system("start speech.mp3")
+        # On local machine
+        # speech.save("speech.mp3")
+        # os.system("start speech.mp3")
 
-        print(data)  # For debugging
+        # Save the speech to memory as bytes
+        speech_file = io.BytesIO()
+        speech.write_to_fp(speech_file)
+        speech_bytes = speech_file.getvalue()
+        speech_base64 = base64.b64encode(speech_bytes).decode('utf-8')
 
         # Read the image file and convert it to base64 encoding
         f.seek(0)
@@ -44,7 +50,9 @@ def index():
 
         # Result
         result = {'image': image_base64,
-                  'text': text}
+                  'text': text,
+                  'speech': speech_base64
+                  }
 
         return render_template("index.html", result=result)
 

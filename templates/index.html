@@ -45,6 +45,15 @@
     <h4 class="text-center my-5">Upload an image to get the text and speech</h4>
     <!-- End of Headings -->
 
+    <!-- Error -->
+    {% if error %}
+    <div class="error text-center my-5">
+      <h2>Error</h2>
+      <p>{{ error }}</p>
+    </div>
+    {% endif %}
+    <!-- End of Error -->
+
     <!-- Form -->
     <form
       action="/"
@@ -59,7 +68,18 @@
           <i class="fa fa-arrow-up"></i>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <div class="submit-container">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <div id="loading-spinner2" style="display: none">
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="shadow"></div>
+          <div class="shadow"></div>
+          <div class="shadow"></div>
+          <span>Analyzing</span>
+        </div>
+      </div>
     </form>
     <!-- End of Form -->
 
@@ -71,17 +91,6 @@
       <h3>Loading...</h3>
     </div>
     -->
-
-    <!-- Spinner 2 -->
-    <div id="loading-spinner2" style="display: none">
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="shadow"></div>
-      <div class="shadow"></div>
-      <div class="shadow"></div>
-      <span>Loading</span>
-    </div>
 
     <!-- End of Loading Spinner -->
 
@@ -121,15 +130,6 @@
     </div>
     {% endif %}
     <!-- End of Result -->
-
-    <!-- Error -->
-    {% if error %}
-    <div class="error text-center my-5">
-      <h2>Error</h2>
-      <p>{{ error }}</p>
-    </div>
-    {% endif %}
-    <!-- End of Error -->
 
     <!-- Custom JS -->
     <script

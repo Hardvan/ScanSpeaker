@@ -68,17 +68,21 @@
         />
         Your browser does not support the audio element.
       </audio>
-      <div>
-        <img
-          src="data:image/jpeg;base64,{{ result.image }}"
-          alt="Original Image"
-        />
-      </div>
-      <div>
-        <img
-          src="data:image/jpeg;base64,{{ result.result_image }}"
-          alt="Result Image"
-        />
+      <div class="row my-3">
+        <div class="col">
+          <img
+            src="data:image/jpeg;base64,{{ result.image }}"
+            alt="Original Image"
+            style="max-width: 100%; height: auto"
+          />
+        </div>
+        <div class="col">
+          <img
+            src="data:image/jpeg;base64,{{ result.result_image }}"
+            alt="Result Image"
+            style="max-width: 100%; height: auto"
+          />
+        </div>
       </div>
     </div>
     {% endif %} {% if error %}

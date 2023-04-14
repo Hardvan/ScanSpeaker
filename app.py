@@ -31,22 +31,22 @@ def index():
         data = reader.readtext(np.array(img))
         print(data)  # For debugging
 
-        # For multiple lines
-        text = ""
-        for i in range(len(data)):
-            text += data[i][1] + " "
-
-        # Putting rectangle around the text
+        # Reading text & Putting rectangles
+        result_text = []
         result_image = np.array(img)
         for detection in data:
             top_left = tuple([int(val) for val in detection[0][0]])
             bottom_right = tuple([int(val) for val in detection[0][2]])
-            text = detection[1]
+            result_text.append(detection[1])
 
             result_image = cv2.rectangle(
                 result_image, top_left, bottom_right, (0, 255, 0), 5)
-            result_image = cv2.putText(result_image, text, top_left, cv2.FONT_HERSHEY_SIMPLEX,
+            result_image = cv2.putText(result_image, result_text[-1], top_left, cv2.FONT_HERSHEY_SIMPLEX,
                                        2, (255, 255, 255), 2, cv2.LINE_AA)
+        result_text = " ".join(result_text)
+
+        # Convert the image from BGR to RGB
+        result_image = cv2.cvtColor(result_image, cv2.COLOR_BGR2RGB)
 
         # Encode result_image as base64 string
         _, result_image_buffer = cv2.imencode('.jpg', result_image)
@@ -55,7 +55,7 @@ def index():
 
         # Converting to speech
         language = 'en'
-        speech = gTTS(text=text, lang=language, slow=False)
+        speech = gTTS(text=result_text, lang=language, slow=False)
 
         # On local machine
         # speech.save("speech.mp3")
@@ -75,7 +75,7 @@ def index():
         # Result
         result = {'image': image_base64,
                   'result_image': result_image_base64,
-                  'text': text,
+                  'text': result_text,
                   'speech': speech_base64
                   }
 

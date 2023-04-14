@@ -68,6 +68,18 @@
         />
         Your browser does not support the audio element.
       </audio>
+      <div>
+        <img
+          src="data:image/jpeg;base64,{{ result.image }}"
+          alt="Original Image"
+        />
+      </div>
+      <div>
+        <img
+          src="data:image/jpeg;base64,{{ result.result_image }}"
+          alt="Result Image"
+        />
+      </div>
     </div>
     {% endif %} {% if error %}
     <div class="error text-center my-5">

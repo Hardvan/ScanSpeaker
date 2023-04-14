@@ -10,6 +10,7 @@ html {
 }
 
 body {
+  padding: 20px;
 }
 
 .wrapper {
@@ -18,8 +19,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 2rem;
 }
-.wrapper .file-upload {
+
+.file-upload {
   height: 200px;
   width: 200px;
   border-radius: 100px;
@@ -35,7 +38,8 @@ body {
   color: #ffffff;
   font-size: 100px;
 }
-.wrapper .file-upload input[type="file"] {
+
+.file-upload input[type="file"] {
   height: 200px;
   width: 200px;
   position: absolute;
@@ -44,7 +48,22 @@ body {
   opacity: 0;
   cursor: pointer;
 }
-.wrapper .file-upload:hover {
+
+.file-upload:hover {
   background-position: 0 -100%;
   color: #2590eb;
+}
+
+.result {
+  margin-top: 5rem;
+}
+
+.result h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.result p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
 }

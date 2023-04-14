@@ -40,20 +40,25 @@
   </head>
 
   <body>
-    <h1>Scan Speaker</h1>
+    <h1 class="text-center my-5">Scan Speaker</h1>
 
-    <form action="/" method="POST" enctype="multipart/form-data">
+    <form
+      action="/"
+      method="POST"
+      enctype="multipart/form-data"
+      class="text-center"
+    >
       <div class="wrapper">
         <div class="file-upload">
           <input type="file" name="imageFile" />
           <i class="fa fa-arrow-up"></i>
         </div>
       </div>
-      <button type="submit">Submit</button>
+      <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 
     {% if result %}
-    <div class="result">
+    <div class="result text-center my-5">
       <h2>Result</h2>
       <p>{{ result.text }}</p>
       <audio controls>

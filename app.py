@@ -25,7 +25,14 @@ def index():
         # Reading the text from the image
         reader = easyocr.Reader(['en'])
         data = reader.readtext(np.array(img))
-        text = data[0][1]
+
+        # For one line of text
+        # text = data[0][1]
+
+        # For multiple lines
+        text = ""
+        for i in range(len(data)):
+            text += data[i][1] + " "
 
         print(data)  # For debugging
 

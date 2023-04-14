@@ -40,9 +40,12 @@
   </head>
 
   <body>
+    <!-- Headings -->
     <h1 class="text-center my-5">Scan Speaker</h1>
     <h4 class="text-center my-5">Upload an image to get the text and speech</h4>
+    <!-- End of Headings -->
 
+    <!-- Form -->
     <form
       action="/"
       method="POST"
@@ -58,12 +61,16 @@
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+    <!-- End of Form -->
 
+    <!-- Loading Spinner -->
     <div id="loading-spinner" class="text-center my-5" style="display: none">
       <i class="fa fa-spinner fa-spin fa-5x"></i>
       <h3>Loading...</h3>
     </div>
+    <!-- End of Loading Spinner -->
 
+    <!-- Result -->
     {% if result %}
     <div class="result text-center my-5">
       <h2>Result</h2>
@@ -97,12 +104,17 @@
         </div>
       </div>
     </div>
-    {% endif %} {% if error %}
+    {% endif %}
+    <!-- End of Result -->
+
+    <!-- Error -->
+    {% if error %}
     <div class="error text-center my-5">
       <h2>Error</h2>
       <p>{{ error }}</p>
     </div>
     {% endif %}
+    <!-- End of Error -->
 
     <!-- Custom JS -->
     <script

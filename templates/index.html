@@ -47,6 +47,7 @@
       method="POST"
       enctype="multipart/form-data"
       class="text-center"
+      onsubmit="showLoadingSpinner()"
     >
       <div class="wrapper">
         <div class="file-upload">
@@ -56,6 +57,11 @@
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+
+    <div id="loading-spinner" class="text-center my-5" style="display: none">
+      <i class="fa fa-spinner fa-spin fa-5x"></i>
+      <h3>Loading...</h3>
+    </div>
 
     {% if result %}
     <div class="result text-center my-5">

@@ -9,6 +9,6 @@ inputFile.addEventListener("change", function () {
 
   // Displaying the file name and size
   fileNameContainer.textContent = `${this.files[0].name} (${(
-    this.files[0].size / 1000
+    this.files[0].size / 1024
   ).toFixed(2)} KB)`;
 });

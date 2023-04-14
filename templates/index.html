@@ -69,6 +69,11 @@
         Your browser does not support the audio element.
       </audio>
     </div>
+    {% endif %} {% if error %}
+    <div class="error text-center my-5">
+      <h2>Error</h2>
+      <p>{{ error }}</p>
+    </div>
     {% endif %}
 
     <!-- Custom JS -->

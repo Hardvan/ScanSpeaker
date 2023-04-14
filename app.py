@@ -6,7 +6,7 @@ import io
 import easyocr
 import cv2
 import numpy as np
-from PIL import Image
+import PIL
 from gtts import gTTS
 import os
 
@@ -20,7 +20,11 @@ def index():
         f = request.files["imageFile"]
 
         # Load the image
-        img = Image.open(io.BytesIO(f.read()))
+        try:
+            img = PIL.Image.open(io.BytesIO(f.read()))
+
+        except PIL.UnidentifiedImageError:
+            return render_template("index.html", error="Invalid Image (Not an image)")
 
         # Reading the text from the image
         reader = easyocr.Reader(['en'])

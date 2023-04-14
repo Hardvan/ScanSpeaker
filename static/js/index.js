@@ -1,3 +1,3 @@
 function showLoadingSpinner() {
-  document.getElementById("loading-spinner").style.display = "block";
+  document.getElementById("loading-spinner2").style.display = "block";
 }

@@ -7,6 +7,8 @@ import easyocr
 import cv2
 import numpy as np
 from PIL import Image
+from gtts import gTTS
+import os
 
 app = Flask(__name__)
 
@@ -24,6 +26,14 @@ def index():
         reader = easyocr.Reader(['en'])
         data = reader.readtext(np.array(img))
         text = data[0][1]
+
+        # Converting to speech
+        language = 'en'
+        speech = gTTS(text=text, lang=language, slow=False)
+        speech.save("speech.mp3")
+
+        # Play the audio
+        os.system("start speech.mp3")
 
         print(data)  # For debugging
 

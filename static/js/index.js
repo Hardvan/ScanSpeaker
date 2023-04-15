@@ -3,7 +3,6 @@ function showLoadingSpinner() {
 }
 
 const inputFile = document.getElementById("imageFile");
-
 inputFile.addEventListener("change", function () {
   const fileNameContainer = document.getElementById("file-name-container");
 

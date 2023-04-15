@@ -31,15 +31,6 @@ def getResult(img, f):
     return result
 
 
-def getData(img):
-
-    reader = easyocr.Reader(['en'])
-    data = reader.readtext(np.array(img))
-    print(data)  # For debugging
-
-    return data
-
-
 def getImageBase64(f):
 
     f.seek(0)
@@ -47,6 +38,15 @@ def getImageBase64(f):
     image_base64 = base64.b64encode(image_file).decode('utf-8')
 
     return image_base64
+
+
+def getData(img):
+
+    reader = easyocr.Reader(['en'])
+    data = reader.readtext(np.array(img))
+    print(data)  # For debugging
+
+    return data
 
 
 def getTextAndImage(img, data):

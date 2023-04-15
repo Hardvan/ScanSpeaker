@@ -1,12 +1,34 @@
 # import os
 import numpy as np
-from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing import image
 import io
 import cv2
 import base64
 import easyocr
 from gtts import gTTS
+
+
+def getResult(img, f):
+
+    # Read the image file and convert it to base64 encoding
+    image_base64 = getImageBase64(f)
+
+    # Reading the text from the image
+    data = getData(img)
+
+    # Reading text & Putting rectangles
+    result_text, result_image_base64 = getTextAndImage(img, data)
+
+    # Converting to speech
+    speech_base64 = getSpeech(result_text)
+
+    # Result
+    result = {'image': image_base64,
+              'result_image': result_image_base64,
+              'text': result_text,
+              'speech': speech_base64
+              }
+
+    return result
 
 
 def getData(img):
@@ -69,27 +91,3 @@ def getSpeech(result_text):
     speech_base64 = base64.b64encode(speech_bytes).decode('utf-8')
 
     return speech_base64
-
-
-def getResult(img, f):
-
-    # Read the image file and convert it to base64 encoding
-    image_base64 = getImageBase64(f)
-
-    # Reading the text from the image
-    data = getData(img)
-
-    # Reading text & Putting rectangles
-    result_text, result_image_base64 = getTextAndImage(img, data)
-
-    # Converting to speech
-    speech_base64 = getSpeech(result_text)
-
-    # Result
-    result = {'image': image_base64,
-              'result_image': result_image_base64,
-              'text': result_text,
-              'speech': speech_base64
-              }
-
-    return result
